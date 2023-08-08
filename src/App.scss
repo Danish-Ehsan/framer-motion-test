@@ -9,10 +9,20 @@
     padding: 2em;
 }
 
+.component__cont {
+    height: 84px;
+    position: relative;
+}
+
 .component {
     padding: 30px;
     border-radius: 20px;
     font-weight: bold;
+
+    &.absolute {
+        position: absolute;
+        width: 100%;
+    }
 
     &.red {
         background: #d13852;
