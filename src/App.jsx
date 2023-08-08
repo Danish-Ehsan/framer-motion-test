@@ -22,7 +22,8 @@ function App() {
                     Switch Component
                 </button>
             </div>
-            <ComponentC />
+            {/* <ComponentC /> */}
+            <ComponentD />
         </>
     );
 }
@@ -69,6 +70,33 @@ function ComponentC() {
         >
             Component C
         </motion.div>
+    );
+}
+
+function ComponentD() {
+    const [isActive, setIsActive] = useState(true);
+
+    return (
+        <div
+            className={
+                isActive
+                    ? "layout-component__cont active"
+                    : "layout-component__cont"
+            }
+        >
+            <motion.button
+                layout
+                transition={{ type: "spring", stiffness: 700, damping: 30 }}
+                className={
+                    isActive ? "layout-component active" : "layout-component"
+                }
+                onClick={() => {
+                    setIsActive(!isActive);
+                }}
+            >
+                {isActive ? "true" : "false"}
+            </motion.button>
+        </div>
     );
 }
 

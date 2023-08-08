@@ -26,3 +26,27 @@
         background: #8a38d1;
     }
 }
+
+.layout-component__cont {
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-end;
+
+    &.active {
+        justify-content: flex-start;
+    }
+}
+
+.layout-component {
+    background: #d13852;
+    width: 50%;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 14px;
+
+    &.active {
+        background: #2dba78;
+    }
+}
