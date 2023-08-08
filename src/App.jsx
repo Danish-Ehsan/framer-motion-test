@@ -32,6 +32,7 @@ function App() {
             </div>
             {/* <ComponentC /> */}
             <ComponentD />
+            <ComponentE />
         </>
     );
 }
@@ -107,6 +108,53 @@ function ComponentD() {
                 {isActive ? "true" : "false"}
             </motion.button>
         </div>
+    );
+}
+
+function ComponentE() {
+    const [isVisible, setIsVisible] = useState(true);
+
+    const list = {
+        visible: {
+            transition: {
+                when: "beforeChildren",
+                staggerChildren: 0.2
+            }
+        },
+        hidden: {
+            transition: {
+                when: "afterChildren"
+            }
+        }
+    };
+
+    const item = {
+        visible: { opacity: 1, x: 0 },
+        hidden: { opacity: 0, x: -20 }
+    };
+
+    const listItems = ["Item One", "Item Two", "Item Three"];
+
+    return (
+        <>
+            <motion.ul
+                className="component-list"
+                initial="hidden"
+                animate={isVisible ? "visible" : "hidden"}
+                variants={list}
+            >
+                {listItems.map((elm) => {
+                    return (
+                        <motion.li key={elm} variants={item}>
+                            {elm}
+                        </motion.li>
+                    );
+                })}
+            </motion.ul>
+            <button onClick={() => setIsVisible(!isVisible)}>
+                {isVisible ? "Hide List" : "Show List"}
+            </button>
+        </>
     );
 }
 

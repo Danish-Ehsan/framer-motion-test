@@ -43,6 +43,7 @@
     border-radius: 10px;
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 30px;
 
     &.active {
         justify-content: flex-start;
@@ -58,5 +59,11 @@
 
     &.active {
         background: #2dba78;
+    }
+}
+
+.component-list {
+    li {
+        text-align: left;
     }
 }
