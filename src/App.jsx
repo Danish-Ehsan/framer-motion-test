@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.scss";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 function App() {
     const [activeComponent, setActiveComponent] = useState(1);
@@ -8,7 +8,15 @@ function App() {
     return (
         <>
             <h1>Framer Motion Test</h1>
-            {activeComponent === 1 ? <ComponentA /> : <ComponentB />}
+            <div className="component__cont">
+                <AnimatePresence initial={false}>
+                    {activeComponent === 1 ? (
+                        <ComponentA key="ComponentA" />
+                    ) : (
+                        <ComponentB key="ComponentB" />
+                    )}
+                </AnimatePresence>
+            </div>
             <div className="card">
                 <button
                     onClick={() => {
@@ -31,9 +39,10 @@ function App() {
 function ComponentA() {
     return (
         <motion.div
-            className="component blue"
-            initial={{ opacity: 0, x: -50 }}
+            className="component absolute blue"
+            initial={{ opacity: 0, x: "-100%" }}
             animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.5 }}
         >
             Component A
@@ -44,9 +53,10 @@ function ComponentA() {
 function ComponentB() {
     return (
         <motion.div
-            className="component red"
-            initial={{ opacity: 0, x: -50 }}
+            className="component absolute red"
+            initial={{ opacity: 0, x: "-100%" }}
             animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.5 }}
         >
             Component B
