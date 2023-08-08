@@ -96,7 +96,7 @@ function ComponentD() {
         >
             <motion.button
                 layout
-                transition={{ type: "spring", stiffness: 700, damping: 30 }}
+                transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 className={
                     isActive ? "layout-component active" : "layout-component"
                 }
