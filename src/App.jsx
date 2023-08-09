@@ -17,19 +17,17 @@ function App() {
                     )}
                 </AnimatePresence>
             </div>
-            <div className="card">
-                <button
-                    onClick={() => {
-                        if (activeComponent === 1) {
-                            setActiveComponent(2);
-                        } else {
-                            setActiveComponent(1);
-                        }
-                    }}
-                >
-                    Switch Component
-                </button>
-            </div>
+            <button
+                onClick={() => {
+                    if (activeComponent === 1) {
+                        setActiveComponent(2);
+                    } else {
+                        setActiveComponent(1);
+                    }
+                }}
+            >
+                Switch Component
+            </button>
             {/* <ComponentC /> */}
             <hr />
             <ComponentD />
