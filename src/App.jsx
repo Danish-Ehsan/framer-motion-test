@@ -31,8 +31,11 @@ function App() {
                 </button>
             </div>
             {/* <ComponentC /> */}
+            <hr />
             <ComponentD />
+            <hr />
             <ComponentE />
+            <hr />
             <ComponentF />
         </>
     );
