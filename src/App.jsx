@@ -171,6 +171,7 @@ function ComponentF() {
                     <motion.div
                         layoutId="tab-bkg"
                         className="tab-bkg"
+                        style={{ borderRadius: "8px" }}
                     ></motion.div>
                 )}
                 <button
