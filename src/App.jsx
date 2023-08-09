@@ -33,6 +33,7 @@ function App() {
             {/* <ComponentC /> */}
             <ComponentD />
             <ComponentE />
+            <ComponentF />
         </>
     );
 }
@@ -156,6 +157,33 @@ function ComponentE() {
             </button>
         </>
     );
+}
+
+function ComponentF() {
+    const tabs = ["word", "longer word", "much longer word"];
+    const [activeTab, setActiveTab] = useState(tabs[0]);
+
+    const tabElements = tabs.map((elm, i) => {
+        return (
+            <li>
+                {activeTab === tabs[i] && (
+                    <motion.div
+                        layoutId="tab-bkg"
+                        className="tab-bkg"
+                    ></motion.div>
+                )}
+                <button
+                    onClick={() => {
+                        setActiveTab(tabs[i]);
+                    }}
+                >
+                    {elm}
+                </button>
+            </li>
+        );
+    });
+
+    return <ul className="tabs-list">{tabElements}</ul>;
 }
 
 export default App;
