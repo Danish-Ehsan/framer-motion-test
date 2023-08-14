@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./App.scss";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -119,8 +119,11 @@ function ComponentE() {
     const [listItems, setListItems] = useState([
         "Item One",
         "Item Two",
-        "Item Three"
+        "Item Three",
+        "Item Four",
+        "Item Five"
     ]);
+    const dragItemRef = useRef(null);
 
     const list = {
         visible: {
@@ -151,7 +154,50 @@ function ComponentE() {
             >
                 {listItems.map((elm) => {
                     return (
-                        <motion.li key={elm} variants={item} layout>
+                        <motion.li
+                            key={elm}
+                            variants={item}
+                            layout
+                            draggable
+                            onDragStart={() => {
+                                dragItemRef.current = elm;
+                                console.log("onDragStart");
+                            }}
+                            onDragEnter={(e) => {
+                                console.log("onDragEnter", e.target.innerText);
+                                const draggedIndex = listItems.indexOf(
+                                    dragItemRef.current
+                                );
+                                const draggedOverIndex = listItems.indexOf(
+                                    e.target.innerText
+                                );
+                                console.log("draggedIndex", draggedIndex);
+                                console.log(
+                                    "draggedOverIndex",
+                                    draggedOverIndex
+                                );
+
+                                if (draggedIndex !== draggedOverIndex) {
+                                    let newListItems = [
+                                        ...listItems.slice(0, draggedIndex),
+                                        ...listItems.slice(draggedIndex + 1)
+                                    ];
+
+                                    newListItems = [
+                                        ...newListItems.slice(
+                                            0,
+                                            draggedOverIndex
+                                        ),
+                                        listItems[draggedIndex],
+                                        ...newListItems.slice(draggedOverIndex)
+                                    ];
+
+                                    console.log(newListItems);
+
+                                    setListItems(newListItems);
+                                }
+                            }}
+                        >
                             {elm}
                         </motion.li>
                     );
