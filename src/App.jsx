@@ -67,6 +67,7 @@ function ComponentB() {
     );
 }
 
+// eslint-disable-next-line no-unused-vars
 function ComponentC() {
     return (
         <motion.div
@@ -166,7 +167,7 @@ function ComponentF() {
 
     const tabElements = tabs.map((elm, i) => {
         return (
-            <li>
+            <li key={elm}>
                 {activeTab === tabs[i] && (
                     <motion.div
                         layoutId="tab-bkg"
