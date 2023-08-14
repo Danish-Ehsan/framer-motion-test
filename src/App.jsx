@@ -116,6 +116,11 @@ function ComponentD() {
 
 function ComponentE() {
     const [isVisible, setIsVisible] = useState(true);
+    const [listItems, setListItems] = useState([
+        "Item One",
+        "Item Two",
+        "Item Three"
+    ]);
 
     const list = {
         visible: {
@@ -136,8 +141,6 @@ function ComponentE() {
         hidden: { opacity: 0, x: -20 }
     };
 
-    const listItems = ["Item One", "Item Two", "Item Three"];
-
     return (
         <>
             <motion.ul
@@ -148,7 +151,7 @@ function ComponentE() {
             >
                 {listItems.map((elm) => {
                     return (
-                        <motion.li key={elm} variants={item}>
+                        <motion.li key={elm} variants={item} layout>
                             {elm}
                         </motion.li>
                     );
@@ -156,6 +159,16 @@ function ComponentE() {
             </motion.ul>
             <button onClick={() => setIsVisible(!isVisible)}>
                 {isVisible ? "Hide List" : "Show List"}
+            </button>
+            <button
+                onClick={() => {
+                    const newArray = [...listItems];
+                    newArray.reverse();
+                    setListItems(newArray);
+                }}
+                style={{ marginLeft: "10px" }}
+            >
+                Reverse
             </button>
         </>
     );
